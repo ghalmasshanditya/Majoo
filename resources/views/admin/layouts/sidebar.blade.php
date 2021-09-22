@@ -58,7 +58,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/education" class="nav-link @if (request()->segment(1) == 'education') active @endif">
+            <a href="/product" class="nav-link @if (request()->segment(1) == 'education') active @endif">
             <i class="nav-icon fas fa-graduation-cap"></i>
             <p>
                 Produk
@@ -67,10 +67,19 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/experience" class="nav-link @if (request()->segment(1) == 'experience') active @endif">
+            <a href="/kategori" class="nav-link @if (request()->segment(1) == 'experience') active @endif">
             <i class="nav-icon fas fa-briefcase"></i>
             <p>
                 Kategori
+                {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/orders" class="nav-link @if (request()->segment(1) == 'experience') active @endif">
+            <i class="nav-icon fas fa-shopping-cart"></i>
+            <p>
+                Order
                 {{-- <span class="right badge badge-danger">New</span> --}}
             </p>
             </a>
