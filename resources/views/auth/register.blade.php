@@ -77,7 +77,7 @@
         <main class="form-signin">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <a href="/"><img class="mb-4" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="75" height="65"></a>
+                <a href="/"><img class="img" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="125" height="125"></a>
                 <h1 class="h3 mb-3 fw-normal">Silahkan buat akun</h1>
 
                 <div class="form-floating">
@@ -93,7 +93,7 @@
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button class="w-100 btn btn-lg text-white" style="background: #07C53C" type="submit">Sign Up</button>
-                <p class="mt-2 ext-muted">Sudah punya akun ? <a href="{{ route("login") }}" style="color: #07C53C;text-decoration:none" >masuk</a></p>
+                <p class="mt-2 ext-muted">Sudah punya akun ? <a href="{{ route("login") }}" style="color: #07C53C;text-decoration:none" >Masuk</a></p>
                 <p class="mb-3 text-muted">2019 &copy; PT Majoo Teknologi Indonesia</p>
             </form>
         </main>

@@ -78,8 +78,8 @@
             <main class="form-signin">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <a href="/"><img class="mb-4" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="75" height="65"></a>
-                    <h1 class="h3 mb-3 fw-normal">Silahkan masuk </h1>
+                    <a href="/"><img class="img" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="125" height="125"></a>
+                    <h1 class="h3 mb-3 fw-normal">Silahkan masuk</h1>
 
                     <div class="form-floating">
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="you@example.com" value="{{ old('email') }}">

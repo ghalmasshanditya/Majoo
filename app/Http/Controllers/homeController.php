@@ -39,6 +39,11 @@ class homeController extends Controller
         // dd($data);
         return view('users.home.index', $data);
     }
+    public function dashboard()
+    {
+        // dd($data);
+        return view('admin.layouts.master');
+    }
 
     /**
      * Store a newly created resource in storage.

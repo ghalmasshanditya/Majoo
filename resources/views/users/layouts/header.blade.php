@@ -11,12 +11,18 @@
 
 
             <div class="dropdown text-end">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+                @if (Auth::user())
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+                @else
+                    <a href="{{ route('login') }}"><button class="btn text-white btn-default" style="background: #07C53C;" >MASUK</button></a>
+                    <a href="{{ route('register') }}"><button class="btn text-white btn-default" style="background: #4289C7" >DAFTAR</button></a>
+                @endif
+
             </div>
         </div>
     </div>

@@ -18,6 +18,7 @@ use App\Http\Controllers\ordersController;
 */
 
 Route::get('/', [homeController::class, 'index'])->name('utama');
+Route::get('/dashboard', [homeController::class, 'dashboard'])->name('dashboard');
 Route::get('/check-out/{id}', [ordersController::class, 'fillCheckout'])->name('check');
 // Route::get('/check-out/{id}', [orderController::class, 'fillCheckout'])->name('check-out');
 Route::post('/check-out/process', [orderController::class, 'store'])->name('check-out.process');
