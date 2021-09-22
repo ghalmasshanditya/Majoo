@@ -123,10 +123,10 @@
                             @error('foto_produk')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
-                            {{-- <div class="progress">
+                            <div class="progress">
                                 <div class="bar progress-bar progress-bar-striped progress-bar-animated"></div >
                             </div>
-                            <div class="percent" style="float: right">0%</div > --}}
+                            <div class="percent" style="float: right">0%</div >
                         </div>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
         } );
 </script>
 
-{{-- <script type="text/javascript">
+<script type="text/javascript">
  
     var SITEURL = "{{URL('/')}}";
      
@@ -290,5 +290,5 @@
             });
         }); 
     });
-</script> --}}
+</script>
 @endsection
