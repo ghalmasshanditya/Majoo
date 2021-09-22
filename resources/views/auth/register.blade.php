@@ -75,11 +75,17 @@
     </head>
     <body class="text-center" style="background: #E4F0C5;">
         <main class="form-signin">
+            
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <a href="/"><img class="img" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="125" height="125"></a>
                 <h1 class="h3 mb-3 fw-normal">Silahkan buat akun</h1>
-
+                @if (session()->has('gagal'))
+                    <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                    </div>
+                @endif  
+                
                 <div class="form-floating">
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="floatingInput" placeholder="Name" value="{{ old('name') }}">
                     <label for="floatingInput">Nama</label>

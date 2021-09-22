@@ -35,16 +35,11 @@
         <i class="fas fa-expand-arrows-alt"></i>
         </a>
     </li>
-    {{-- <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-        <i class="fas fa-th-large"></i>
-        </a>
-    </li> --}}
     <li class="nav-item">
         @if (Auth::user())
-        <a href="/logout"><button type="button" class="nav-link btn btn-block btn-danger btn-sm text-white"> Log Out</button></a>
+        <a href="/logout"><button type="button" class="nav-link btn btn-block btn-danger btn-sm text-white"> Keluar</button></a>
         @else
-        <a href="{{ route('login') }}"><button type="button" class="nav-link btn btn-block btn-info btn-sm text-white"> Log In</button></a>
+        <a href="{{ route('login') }}"><button type="button" class="nav-link btn btn-block btn-info btn-sm text-white"> Masuk</button></a>
         @endif
     </li>
     </ul>

@@ -3,6 +3,17 @@
 @section('page-name','Edit Product')
 @section('content')
 <div class="col-md-12">
+    @if (session()->has('gagal'))
+        <div class="alert alert-danger" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('gagal') }}
+        </div>
+    @elseif(session()->has('success'))
+        <div class="alert alert-success" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="card card-warning">
         <div class="card-header">
           <h3 class="card-title">Edit Product</h3>
@@ -40,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea id="task-textarea" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" rows="5" placeholder="Masukkan Deskripsi">{!! $product->keterangan !!}</textarea>
+                    <textarea id="task-textarea" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" rows="5" placeholder="Masukkan Deskripsi">{!! $product->deskripsi !!}</textarea>
                     @error('deskripsi')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -55,11 +66,12 @@
                     <div class="progress">
                         <div class="bar progress-bar progress-bar-striped progress-bar-animated"></div >
                     </div>
-                    <div class="percent" style="float: right0">0%</div >
+                    <div class="percent" style="float: right">0%</div >
                 </div>
             </div>
             <!-- /.card-body -->
             <input type="hidden" name="unlink" value="{{ $product->foto_produk }}">
+            <input type="hidden" name="unique" value="{{ $product->nama }}">
             <div class="card-footer">
                 <a href="{{ route('product') }}"><button type="button" class="btn btn-primary">Kembali</button></a>
                 <button type="submit" class="btn btn-warning">Edit</button>
@@ -88,8 +100,6 @@
         } );
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 <script type="text/javascript">
  
     var SITEURL = "{{URL('/')}}";
@@ -111,7 +121,7 @@
                     percent.html(percentVal);
                 },
                 complete: function(xhr) {
-                    alert('Foto Berhasil diunggah');
+                    // alert('Foto Berhasil diunggah');
                     window.location.href = SITEURL +"/"+"product";
                 }
             });

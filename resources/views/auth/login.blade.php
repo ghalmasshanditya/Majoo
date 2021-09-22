@@ -80,7 +80,15 @@
                     @csrf
                     <a href="/"><img class="img" src="{{asset('assets/dist/img/icons')}}/majoo.png" alt="" width="125" height="125"></a>
                     <h1 class="h3 mb-3 fw-normal">Silahkan masuk</h1>
-
+                    @if (session()->has('gagal'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session()->get('gagal') }}
+                        </div>
+                    @elseif(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <div class="form-floating">
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="you@example.com" value="{{ old('email') }}">
                         <label for="floatingInput">Email</label>

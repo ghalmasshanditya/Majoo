@@ -13,14 +13,18 @@
             <div class="dropdown text-end">
                 @if (Auth::user())
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                    @if (Auth::user()->foto == '')
+                    <img src="{{ asset('assets') }}/dist/img/profile/profile.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                    @else
+                    <img src="{{ asset('assets') }}/dist/img/profile/{{ Auth::user()->foto }}" alt="mdo" width="40" height="40" class="rounded-circle">
+                    @endif
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
                 </ul>
                 @else
-                    <a href="{{ route('login') }}"><button class="btn text-white btn-default" style="background: #07C53C;" >MASUK</button></a>
-                    <a href="{{ route('register') }}"><button class="btn text-white btn-default" style="background: #4289C7" >DAFTAR</button></a>
+                    <a href="{{ route('login') }}"><button class="btn text-white btn-default" style="background: #07C53C;" >LOGIN ADMIN</button></a>
+                    {{-- <a href="{{ route('register') }}"><button class="btn text-white btn-default" style="background: #4289C7" >DAFTAR</button></a> --}}
                 @endif
 
             </div>

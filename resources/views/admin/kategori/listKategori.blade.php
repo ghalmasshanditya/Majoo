@@ -2,58 +2,73 @@
 @section('title','List Kategori')
 @section('page-name','List Kategori')
 @section('content')
+
 <div class="col-12">
+    @if (session()->has('gagal'))
+        <div class="alert alert-danger" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('gagal') }}
+        </div>
+    @elseif(session()->has('success'))
+        <div class="alert alert-success" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="card">
-        <div class="card-header">
+    <div class="card-header">
         <h2 class="card-title" style="float: left;">List Kategori </h2>
         <button type="button" class="btn btn-outline-primary btn-sm mt-0" data-toggle="modal" data-target="#add" style="float: right; top:0"><i class="fas fa-plus"></i> Tambah Kategori</button>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Kategori</th>
-                    <th>Deskripsi</th>
-                    <th class="text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (count($kategori) == 0)
-                <tr class="text-center">
-                    <td colspan="4" class="text-center">- No Data -</td>
-                </tr>
-                @endif
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($kategori as $data)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $data->nama }}</td>
-                    <td>
-                        @if (strlen($data->deskripsi) > 25)
-                        @php
-                            echo substr($data->deskripsi, 0,25).'...';
-                        @endphp
-                        @else
-                        {{ $data->deskripsi }}
-                        @endif
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-outline-warning btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#edit{{ $data->id }}"><i class="fas fa-edit"> </i> Edit</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#delete{{ $data->id }}"><i class="fas fa-trash"> </i> Hapus</button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        </div>
-        <!-- /.card-body -->
     </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Deskripsi</th>
+                        <th class="text-center" style="width: 10%">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (count($kategori) == 0)
+                    <tr class="text-center">
+                        <td colspan="4" class="text-center">- No Data -</td>
+                    </tr>
+                    @endif
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($kategori as $data)
+                    <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>
+                            @if (strlen($data->deskripsi) > 25)
+                            @php
+                                echo substr($data->deskripsi, 0,25).'...';
+                            @endphp
+                            @else
+                            {{ $data->deskripsi }}
+                            @endif
+                        </td>
+                        <td class="text-center" style="width: 10%">
+                            <button type="button" class="btn btn-outline-warning btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#edit{{ $data->id }}"><i class="fas fa-edit"> </i> Edit</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#delete{{ $data->id }}"><i class="fas fa-trash"> </i> Hapus</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <span class="mt-0" style="float: right">{{ $kategori->links() }}</span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
 </div>
-
 <!-- Add Data -->
 <div class="modal fade" id="add">
     <div class="modal-dialog">

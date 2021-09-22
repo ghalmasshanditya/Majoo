@@ -19,7 +19,7 @@
         </div>
         <div class="info">
         <a href="/profile" class="d-block">
-            {{-- @php
+            @php
                 $nama = Auth::user()->name;
             @endphp
             @if (strlen($nama) > 23)
@@ -28,7 +28,7 @@
             @endphp
             @else
             {{ $nama }}
-            @endif --}}
+            @endif
         </a>
         </div>
         @endif

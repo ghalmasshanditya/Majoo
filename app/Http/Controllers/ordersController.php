@@ -6,6 +6,7 @@ use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class ordersController extends Controller
 {
@@ -14,45 +15,47 @@ class ordersController extends Controller
         $this->Orders = new Orders();
         $this->Product = new Product();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $data = array(
-            'order'    => $this->Orders->getData(),
-        );
-        // dd($data);
-        return view('admin.order.listOrder', $data);
+        return view('admin.order.listOrder', [
+            'order' => DB::table('orders')->Join('produks', 'produks.id_produk', '=', 'orders.id_produk')->paginate(5),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        $rules = [
+            'firstName' => 'required',
+            'lastName'  => 'required',
+            'email'      => 'required',
+            'telp'       => 'required',
+            'alamat'     => 'required',
+            'provinsi'   => 'required',
+            'kabupaten'  => 'required',
+            'code'       => 'required',
+        ];
+        $messages = [
+            'firstName.required' => 'Silahkan isi Nama Depan terlebih dahulu',
+            'lastName.required'  => 'Silahkan isi Nama Belakang terlebih dahulu',
+            'email.unique'        => 'Silahkan isi email anda terlebih dahulu',
+            'telp.required'       => 'Silahkan isi nomor telepon terlebih dahulu',
+            'alamat.required'     => 'Silahkan isi nomor telepon terlebih dahulu',
+            'provinsi.required'   => 'Silahkan isi provinsi terlebih dahulu',
+            'kabupaten.required'  => 'Silahkan isi kabupaten terlebih dahulu',
+            'code.required'       => 'Silahkan isi kode pos terlebih dahulu',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput($request->all())->with('error', 'Pembelian produk gagal!');
+        }
         $data = array(
             'id_produk'  => Request()->id_produk,
             'first_name' => Request()->firstName,
             'last_name'  => Request()->lastName,
             'email'      => Request()->email,
             'telp'       => Request()->telp,
-            'alamat'     => Request()->address,
+            'alamat'     => Request()->alamat,
             'provinsi'   => Request()->provinsi,
             'kabupaten'  => Request()->kabupaten,
             'kode_pos'   => Request()->code,
@@ -61,61 +64,16 @@ class ordersController extends Controller
             'updated_at'  => date('Y-m-d H:i:s')
         );
         // dd($data);
-        $this->Order->insert($data);
-        return redirect('/');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Orders  $orders
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Orders $orders)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Orders  $orders
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Orders $orders)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Orders  $orders
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Orders $orders)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Orders  $orders
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Orders $orders)
-    {
-        //
+        $this->Orders->insert($data);
+        return redirect('/')->with('success', 'Pembelian Barang Berhasil!');
     }
 
     public function fillCheckout($id)
     {
         $data = array(
-            'produk'    => $this->Produk->getDataById($id),
+            'produk'    => $this->Product->getDataById($id),
         );
         // dd($data);
-        return view('users.checkout.thanksCheckout', $data);
+        return view('users.checkout.checkoutProduct', $data);
     }
 }

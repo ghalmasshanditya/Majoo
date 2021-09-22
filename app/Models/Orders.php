@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class Orders extends Model
 {
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+    ];
+
     protected $table = 'orders';
     protected $primaryKey = 'id_order';
 

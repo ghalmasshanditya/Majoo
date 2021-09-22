@@ -13,26 +13,22 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/fontawesome-free/css/all.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('assets')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('assets')}}/dist/css/adminlte.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="{{asset('assets')}}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="{{asset('assets')}}/plugins/toastr/toastr.min.css"><!-- Select2 -->
-    <link rel="stylesheet" href="{{asset('assets')}}/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('assets')}}/dist/css/adminlte.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    
     </head>
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
@@ -82,29 +78,10 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="{{asset('assets')}}/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
+    <!-- Bootstrap 4 -->
     <script src="{{asset('assets')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{asset('assets')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('assets')}}/dist/js/adminlte.js"></script>
-
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-    <script src="{{asset('assets')}}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-    <script src="{{asset('assets')}}/plugins/raphael/raphael.min.js"></script>
-    <script src="{{asset('assets')}}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-    <script src="{{asset('assets')}}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-    <!-- ChartJS -->
-    <script src="{{asset('assets')}}/plugins/chart.js/Chart.min.js"></script>
-
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{asset('assets')}}/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{asset('assets')}}/dist/js/pages/dashboard2.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{asset('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="{{asset('assets')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -118,34 +95,32 @@
     <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{asset('assets')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- Select2 -->
-    <script src="{{asset('assets')}}/plugins/select2/js/select2.full.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="{{asset('assets')}}/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <!-- Toastr -->
-    <script src="{{asset('assets')}}/plugins/toastr/toastr.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('assets')}}/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset('assets')}}/dist/js/demo.js"></script>
+    <!-- Page specific script -->
     <!-- CKEDITOR -->
     <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
-    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> --}}
-    {{-- <script src="http://malsup.github.com/jquery.form.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
     <script>
-        $(function () {
-          $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-          $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-          });
+    $(function () {
+        $("#example1").DataTable({
+        "responsive": true,
         });
-      </script>
-      
-      @yield('script')
-    </body>
-    </html>
+
+        $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        });
+    });
+    </script>
+    @yield('script')
+    @include('sweetalert::alert')
+</body>
+</html>

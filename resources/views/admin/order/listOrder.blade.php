@@ -3,60 +3,73 @@
 @section('page-name','List Orders')
 @section('content')
 <div class="col-12">
+    @if (session()->has('gagal'))
+        <div class="alert alert-danger" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('gagal') }}
+        </div>
+    @elseif(session()->has('success'))
+        <div class="alert alert-success" role="alert" id="alert">
+            <button class="close" data-dismiss="alert">x</button>
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="card">
-        <div class="card-header">
+    <div class="card-header">
         <h2 class="card-title" style="float: left;">List Orders </h2>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Foto Produk</th>
-                    <th>Nama Pembeli</th>
-                    {{-- <th>Email</th> --}}
-                    <th>No. Telp</th>
-                    <th>Harga</th>
-                    <th class="text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (count($order) == 0)
-                <tr class="text-center">
-                    <td colspan="7" class="text-center">- No Data -</td>
-                </tr>
-                @endif
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($order as $data)
-                <tr>
-                    <td>{{$no++}}</td>
-                    <td class="text-center">
-                        <a class="image-popup-no-margins" href="{{ url('assets/dist/img/produk/'.$data->foto_produk) }}">
-                            <img class="img-fluid" alt="" src="{{ url('assets/dist/img/produk/'.$data->foto_produk) }}" width="100px" height="50px">
-                        </a>
-                    </td>
-                    <td>{{ $data->first_name }} {{ $data->last_name }}</td>
-                    {{-- <td>{{$data->email}}</td> --}}
-                    <td>{{$data->telp}}</td>
-                    <td>@currency($data->harga)</td>
-                    <td>
-                        <button type="button" style="width: 100%" class="btn btn-sm btn-info waves-effect waves-light" data-toggle="modal" data-target="#faktur{{$data->id_produk}}"><i class="fas fa-eye"> </i> Detail</button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        </div>
-        <!-- /.card-body -->
     </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="user_table" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Foto Produk</th>
+                        <th>Nama Pembeli</th>
+                        <th>Nama Produk</th>
+                        <th>Harga</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (count($order) == 0)
+                        <tr class="text-center">
+                        <td colspan="6" class="text-center">- No Data -</td>
+                    </tr>
+                    @endif
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($order as $data)
+                    <tr>
+                        <td>{{$no++}}</td>
+                        <td class="text-center">
+                            <a class="image-popup-no-margins" href="{{ url('assets/dist/img/produk/'.$data->foto_produk) }}">
+                                <img class="img-fluid" alt="" src="{{ url('assets/dist/img/produk/'.$data->foto_produk) }}" width="100px" height="50px">
+                            </a>
+                        </td>
+                        <td>{{ $data->first_name }} {{ $data->last_name }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>@currency($data->harga)</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-outline-info btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#read{{ $data->id_produk }}"><i class="fas fa-eye"> </i> Detail</button>
+                        </td>
+                    </tr>
+                    @endforeach  
+                </tbody>
+            </table>
+            <span class="mt-0" style="float: right">{{ $order->links() }}</span>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
 </div>
 @foreach ($order as $data)
 <div class="col-sm-6 col-md-3 mt-4">
     <!-- sample modal content -->
-    <div id="faktur{{$data->id_produk}}" class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id="read{{$data->id_produk}}" class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,8 +101,7 @@
                                 <label class="col-md-3" for="deskripsi">Keterangan <br>
                                 </label>
                                 <div class="col-md-9">
-                                    <textarea placeholder="Text here" class="form-control" rows="8" cols="20" value="{{ $data->keterangan }}" readonly>{{$data->keterangan}}</textarea>
-
+                                    {!! $data->deskripsi !!}
                                 </div>
                             </div>
                         </div>
@@ -144,3 +156,5 @@
 @endforeach
 @endsection
 
+@section('script')
+@endsection

@@ -23,16 +23,7 @@
             <div>
                 <h6 class="my-0">{{ $produk->nama }}</h6>
                 <small class="text-muted">
-                    @php
-                        $data = "Deskripsiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
-                    @endphp
-                    @if (strlen($produk->keterangan) > 25)
-                    @php
-                        echo substr($produk->keterangan, 0,25).'...';
-                    @endphp
-                    @else
-                    {{ $produk->keterangan }}
-                    @endif
+                   {!! $produk->deskripsi !!}
                 </small>
             </div>
             <span class="text-muted">@currency($produk->harga)</span>
@@ -67,7 +58,7 @@
 
             <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                <input type="email" value="{{ old('email') }}" class="form-control" id="email" name="email" placeholder="you@example.com" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan email yang benar.
                 </div>
@@ -75,15 +66,15 @@
 
             <div class="col-12">
                 <label for="telp" class="form-label">Nomor Telepon</label>
-                <input type="text" class="form-control" id="telp" name="telp" placeholder="089******" required>
+                <input type="text" value="{{ old('telp') }}" class="form-control" id="telp" name="telp" placeholder="089******" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan nomor telepon.
                 </div>
             </div>
 
             <div class="col-12">
-                <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Jl. Mahakam No.25, Surabaya" required>
+                <label for="alamat" class="form-label">Alamat</label>
+                <input type="text" value="{{ old('alamat') }}" class="form-control" id="alamat" name="alamat" placeholder="Jl. Mahakam No.25, Surabaya" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan alamat pengiriman.
                 </div>
@@ -91,7 +82,7 @@
 
             <div class="col-md-5">
                 <label for="provinsi" class="form-label">Provinsi</label>
-                <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="Jawa Timur" required>
+                <input type="text" value="{{ old('provinsi') }}" class="form-control" id="provinsi" name="provinsi" placeholder="Jawa Timur" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan provinsi.
                 </div>
@@ -99,7 +90,7 @@
 
             <div class="col-md-4">
                 <label for="Kabupate" class="form-label">Kabupaten / Kota</label>
-                <input type="text" class="form-control" id="kabupaten" name="kabupaten" placeholder="Jawa Timur" required>
+                <input type="text" value="{{ old('kabupaten') }}" class="form-control" id="kabupaten" name="kabupaten" placeholder="Jawa Timur" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan kabupaten / kota.
                 </div>
@@ -107,7 +98,7 @@
 
             <div class="col-md-3">
                 <label for="kode_pos" class="form-label">Kode Pos</label>
-                <input type="text" class="form-control" id="code" name="code" placeholder="61268" required>
+                <input type="text" value="{{ old('code') }}" class="form-control" id="code" name="code" placeholder="61268" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan kode pos.
                 </div>

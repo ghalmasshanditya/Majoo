@@ -50,6 +50,6 @@ class RegisteredUserController extends Controller
 
         // Auth::login($user);
 
-        return redirect(RouteServiceProvider::LOGIN);
+        return redirect(RouteServiceProvider::LOGIN)->with('success', 'Selamat akun berhasil dibuat!');
     }
 }

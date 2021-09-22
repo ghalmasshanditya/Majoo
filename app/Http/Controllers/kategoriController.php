@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class kategoriController extends Controller
 {
@@ -14,25 +15,14 @@ class kategoriController extends Controller
     {
         $this->Kategori = new Kategori();
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $data = array(
-            'kategori'    => $this->Kategori->getData(),
-        );
-        // dd($data);
-        return view('admin.kategori.listKategori', $data);
+        return view('admin.kategori.listKategori', [
+            'kategori' => DB::table('categories')->paginate(5),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $rules = [
@@ -43,7 +33,7 @@ class kategoriController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput($request->all())->with('message', 'error');
+            return back()->withErrors($validator)->withInput($request->all())->with('gagal', 'Kategori gagal ditambahkan');
         }
 
         $data = array(
@@ -55,49 +45,9 @@ class kategoriController extends Controller
         // dd($data);
         $this->Kategori->insert($data);
 
-        return redirect('/kategori');
+        return redirect('/kategori')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kategori  $kategori
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Kategori $kategori)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kategori  $kategori
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kategori $kategori)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kategori  $kategori
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kategori $kategori, $id)
     {
         $rules = [
@@ -108,7 +58,7 @@ class kategoriController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput($request->all())->with('message', 'error');
+            return back()->withErrors($validator)->withInput($request->all())->with('toast_error', 'Kategori gagal diperbarui!');
         }
 
         $data = array(
@@ -119,19 +69,13 @@ class kategoriController extends Controller
         // dd($data);
         $this->Kategori->updateData($data, $id);
 
-        return redirect('/kategori')->with('message', 'success');
+        return redirect('/kategori')->with('toast_success', 'Kategori berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kategori  $kategori
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kategori $kategori, $id)
     {
         Kategori::findOrFail($id);
         $this->Kategori->deleteData($id);
-        return redirect('/kategori');
+        return redirect('/kategori')->with('toast_success', 'Kategori berhasil dihapus!');
     }
 }

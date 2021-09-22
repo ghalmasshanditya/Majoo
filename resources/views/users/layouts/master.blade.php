@@ -46,6 +46,7 @@
     </main>
 
     @include('users.layouts.footer')
+    @include('sweetalert::alert')
 
     <script src="{{ asset("assets/dist/bootstrap") }}/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="{{ asset("assets/dist/bootstrap") }}/js/form-validation.js"></script>
