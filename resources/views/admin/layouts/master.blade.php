@@ -8,6 +8,7 @@
 
     <link rel="shortcut icon" href="{{ asset('assets')}}/dist/img/icons/favicon.png">
 
+
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,600&display=swap" rel="stylesheet">
@@ -29,6 +30,9 @@
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('assets')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
@@ -120,6 +124,10 @@
     <script src="{{asset('assets')}}/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- Toastr -->
     <script src="{{asset('assets')}}/plugins/toastr/toastr.min.js"></script>
+    <!-- CKEDITOR -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> --}}
+    {{-- <script src="http://malsup.github.com/jquery.form.js"></script> --}}
     <script>
         $(function () {
           $("#example1").DataTable({
@@ -137,5 +145,7 @@
           });
         });
       </script>
+      
+      @yield('script')
     </body>
     </html>

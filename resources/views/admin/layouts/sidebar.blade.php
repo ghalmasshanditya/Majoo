@@ -11,15 +11,15 @@
     <div class="user-panel @if (request()->segment(1) != 'profile') mt-3 pb-3 mb-3  @else mt-1 @endif d-flex">
         @if (request()->segment(1) != 'profile')
         <div class="image">
-            @if (Auth::user()->foto == '')
+            {{-- @if (Auth::user()->foto == '') --}}
             <img src="{{asset('assets')}}/dist/img/profile.png" class="img-circle elevation-2" alt="User Image">
-            @else
+            {{-- @else
             <img src="{{asset('assets')}}/dist/img/{{ Auth::user()->foto }}" class="img-circle elevation-2" alt="User Image">
-            @endif
+            @endif --}}
         </div>
         <div class="info">
         <a href="/profile" class="d-block">
-            @php
+            {{-- @php
                 $nama = Auth::user()->name;
             @endphp
             @if (strlen($nama) > 23)
@@ -28,7 +28,7 @@
             @endphp
             @else
             {{ $nama }}
-            @endif
+            @endif --}}
         </a>
         </div>
         @endif
@@ -58,8 +58,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/product" class="nav-link @if (request()->segment(1) == 'education') active @endif">
-            <i class="nav-icon fas fa-graduation-cap"></i>
+            <a href="/product" class="nav-link @if (request()->segment(1) == 'product') active @endif">
+            <i class="nav-icon fas fa-box-open"></i>
             <p>
                 Produk
                 {{-- <span class="right badge badge-danger">New</span> --}}
@@ -67,8 +67,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/kategori" class="nav-link @if (request()->segment(1) == 'experience') active @endif">
-            <i class="nav-icon fas fa-briefcase"></i>
+            <a href="/kategori" class="nav-link @if (request()->segment(1) == 'kategori') active @endif">
+            <i class="nav-icon fas fa-book-open"></i>
             <p>
                 Kategori
                 {{-- <span class="right badge badge-danger">New</span> --}}
@@ -76,7 +76,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/orders" class="nav-link @if (request()->segment(1) == 'experience') active @endif">
+            <a href="/orders" class="nav-link @if (request()->segment(1) == 'orders') active @endif">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
                 Order

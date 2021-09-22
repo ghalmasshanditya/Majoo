@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Orders;
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Models\Produk;
+use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 
 class ordersController extends Controller
@@ -13,7 +12,7 @@ class ordersController extends Controller
     public function __construct()
     {
         $this->Orders = new Orders();
-        $this->Produk = new Produk();
+        $this->Product = new Product();
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +21,11 @@ class ordersController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'order'    => $this->Orders->getData(),
+        );
+        // dd($data);
+        return view('admin.order.listOrder', $data);
     }
 
     /**
