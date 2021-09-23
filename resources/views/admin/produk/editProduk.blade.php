@@ -63,10 +63,13 @@
                     @error('foto_produk')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
-                    <div class="progress">
+
+                    <!-- Saya comment karena apabila ada progressbar maka aler form validation tidak jalan -->
+
+                    {{-- <div class="progress">
                         <div class="bar progress-bar progress-bar-striped progress-bar-animated"></div >
                     </div>
-                    <div class="percent" style="float: right">0%</div >
+                    <div class="percent" style="float: right">0%</div > --}}
                 </div>
             </div>
             <!-- /.card-body -->
@@ -99,16 +102,16 @@
             console.error( error );
         } );
 </script>
+<!-- Saya comment karena apabila ada progressbar maka aler form validation tidak jalan -->
+{{-- <script type="text/javascript">
 
-<script type="text/javascript">
- 
     var SITEURL = "{{URL('/')}}";
-     
+
     $(function() {
         $(document).ready(function(){
             var bar = $('.bar');
             var percent = $('.percent');
-     
+
             $('form').ajaxForm({
                 beforeSend: function() {
                     var percentVal = '0%';
@@ -125,7 +128,7 @@
                     window.location.href = SITEURL +"/"+"product";
                 }
             });
-        }); 
+        });
     });
-</script>
+</script> --}}
 @endsection

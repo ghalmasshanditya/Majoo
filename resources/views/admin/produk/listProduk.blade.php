@@ -54,16 +54,16 @@
                         <td class="text-center" style="width: 10%">
                             <button type="button" class="btn btn-outline-info btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#read{{ $data->id_produk }}"><i class="fas fa-eye"> </i> Detail</button>
                             <a href="/product/edit/{{ $data->id_produk }}"><button type="button" class="btn btn-outline-warning btn-sm mt-1" style="width: 100%"><i class="fas fa-edit"> </i> Edit</button></a>
-                                
+
                             <button type="button" class="btn btn-outline-danger btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#delete{{ $data->id_produk }}"><i class="fas fa-trash"> </i> Hapus</button>
                         </td>
                     </tr>
-                    @endforeach  
+                    @endforeach
                 </tbody>
             </table>
             <span class="mt-0" style="float: right">{{ $product->links() }}</span>
         </div>
-        
+
     </div>
     <!-- /.card-body -->
     </div>
@@ -264,14 +264,14 @@
 </script>
 
 <script type="text/javascript">
- 
+
     var SITEURL = "{{URL('/')}}";
-     
+
     $(function() {
         $(document).ready(function(){
             var bar = $('.bar');
             var percent = $('.percent');
-     
+
             $('form').ajaxForm({
                 beforeSend: function() {
                     var percentVal = '0%';
@@ -288,7 +288,7 @@
                     window.location.href = SITEURL +"/"+"product";
                 }
             });
-        }); 
+        });
     });
 </script>
 @endsection

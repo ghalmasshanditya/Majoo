@@ -93,22 +93,38 @@ class productController extends Controller
     public function update(Request $request, $id)
     {
 
-        $rules = [
-            'nama'        => 'required|unique:produks',
-            'harga'       => 'required',
-            'deskripsi'   => 'required',
-            'id_kategori' => 'required',
-        ];
-        $messages = [
-            'nama.required'        => 'Silahkan isi nama terlebih dahulu',
-            'nama.unique'          => 'Nama produk yang anda masukkan sudah terdaftar',
-            'harga.required'       => 'Silahkan isi harga terlebih dahulu',
-            'id_kategori.required' => 'Silahkan pilih kategori produk terlebih dahulu',
-            'deskripsi.required'   => 'Silahkan isi deskripsi terlebih dahulu',
-        ];
+
         if (Request()->nama == Request()->unique) {
-            # code...
+            $rules = [
+                'nama'        => 'required',
+                'harga'       => 'required',
+                'deskripsi'   => 'required',
+                'id_kategori' => 'required',
+            ];
+            $messages = [
+                'nama.required'        => 'Silahkan isi nama terlebih dahulu',
+                'harga.required'       => 'Silahkan isi harga terlebih dahulu',
+                'id_kategori.required' => 'Silahkan pilih kategori produk terlebih dahulu',
+                'deskripsi.required'   => 'Silahkan isi deskripsi terlebih dahulu',
+            ];
+            $validator = Validator::make($request->all(), $rules, $messages);
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput($request->all())->with('gagal', 'Produk gagal diperbarui!');
+            }
         } else {
+            $rules = [
+                'nama'        => 'required|unique:produks',
+                'harga'       => 'required',
+                'deskripsi'   => 'required',
+                'id_kategori' => 'required',
+            ];
+            $messages = [
+                'nama.required'        => 'Silahkan isi nama terlebih dahulu',
+                'nama.unique'          => 'Nama produk yang anda masukkan sudah terdaftar',
+                'harga.required'       => 'Silahkan isi harga terlebih dahulu',
+                'id_kategori.required' => 'Silahkan pilih kategori produk terlebih dahulu',
+                'deskripsi.required'   => 'Silahkan isi deskripsi terlebih dahulu',
+            ];
             $validator = Validator::make($request->all(), $rules, $messages);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput($request->all())->with('gagal', 'Produk gagal diperbarui!');

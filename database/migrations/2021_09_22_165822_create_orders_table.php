@@ -17,15 +17,15 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id_order');
             $table->bigInteger('id_produk')->unsigned();
             $table->foreign('id_produk')->references('id_produk')->on('produks')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name', 20);
+            $table->string('last_name', 35);
             $table->string('email');
-            $table->string('telp');
-            $table->string('provinsi');
-            $table->string('kabupaten');
+            $table->string('telp', 12);
+            $table->string('provinsi', 35);
+            $table->string('kabupaten', 25);
             $table->string('alamat');
-            $table->string('kode_pos');
-            $table->string('total');
+            $table->string('kode_pos', 7);
+            $table->string('total', 10);
             $table->timestamps();
         });
     }

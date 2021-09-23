@@ -17,9 +17,9 @@ class CreateProduksTable extends Migration
             $table->bigIncrements('id_produk');
             $table->bigInteger('id_kategori')->unsigned();
             $table->foreign('id_kategori')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama')->unique();
-            $table->string('foto_produk');
-            $table->string('harga');
+            $table->string('nama', 100)->unique();
+            $table->string('foto_produk', 50);
+            $table->string('harga', 10);
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

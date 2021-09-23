@@ -56,7 +56,7 @@
                             <button type="button" class="btn btn-outline-info btn-sm mt-1" style="width: 100%" data-toggle="modal" data-target="#read{{ $data->id_produk }}"><i class="fas fa-eye"> </i> Detail</button>
                         </td>
                     </tr>
-                    @endforeach  
+                    @endforeach
                 </tbody>
             </table>
             <span class="mt-0" style="float: right">{{ $order->links() }}</span>
@@ -80,6 +80,14 @@
                     <form style="padding: 15px;" action="#" method="POST" enctype="multipart/form-data">
                        @csrf
                        <h5 class="mt-0">Informasi Produk</h5><hr>
+                        <div class="form-group mt-2">
+                            <div class="row">
+                                <label class="col-md-3" for="varchar">Foto Produk</label>
+                                <div class="col-md-9 text-center">
+                                    <img src="{{ url('assets/dist/img/produk/'.$data->foto_produk) }}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group mt-2">
                             <div class="row">
                                 <label class="col-md-3" for="varchar">Nama Produk</label>

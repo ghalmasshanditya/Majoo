@@ -18,10 +18,6 @@
             @error('profile')
                 <small class="text-danger">{{ $message }}</small><br>
             @enderror
-            <div class="progress">
-                        <div class="bar progress-bar progress-bar-striped progress-bar-animated"></div >
-                    </div>
-                    <div class="percent" style="float: right">0%</div >
             <button type="submit" class="btn btn-primary mt-2 mb-2 center-block">Upload</button>
         </form>
         {{-- <p class="text-muted text-center">Back End Developer</p> --}}
@@ -125,32 +121,4 @@
 </div>
 @endsection
 @section('script')
-<script type="text/javascript">
- 
-    var SITEURL = "{{URL('/')}}";
-     
-    $(function() {
-        $(document).ready(function(){
-            var bar = $('.bar');
-            var percent = $('.percent');
-     
-            $('form').ajaxForm({
-                beforeSend: function() {
-                    var percentVal = '0%';
-                    bar.width(percentVal)
-                    percent.html(percentVal);
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    var percentVal = percentComplete + '%';
-                    bar.width(percentVal)
-                    percent.html(percentVal);
-                },
-                complete: function(xhr) {
-                    // alert('Foto Berhasil diunggah');
-                    window.location.href = SITEURL +"/"+"profile";
-                }
-            });
-        }); 
-    });
-</script>
 @endsection
