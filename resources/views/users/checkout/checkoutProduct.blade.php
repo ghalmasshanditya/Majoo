@@ -42,7 +42,7 @@
         <div class="row g-3">
             <div class="col-sm-6">
                 <label for="firstName" class="form-label">Nama Depan</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
+                <input type="text" maxlength="20" class="form-control" id="firstName" name="firstName" placeholder="First Name" value="{{ old('firstName') }}" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan nama depan.
                 </div>
@@ -50,7 +50,7 @@
 
             <div class="col-sm-6">
                 <label for="lastName" class="form-label">Nama Belakang</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
+                <input type="text" maxlength="35" class="form-control" id="lastName" name="lastName" placeholder="Last Name" value="{{ old('lastName') }}" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan nama belakang.
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" value="{{ old('email') }}" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                <input type="email" maxlength="255" value="{{ old('email') }}" class="form-control" id="email" name="email" placeholder="you@example.com" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan email yang benar.
                 </div>
@@ -74,7 +74,7 @@
 
             <div class="col-12">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" value="{{ old('alamat') }}" class="form-control" id="alamat" name="alamat" placeholder="Jl. Mahakam No.25, Surabaya" required>
+                <input type="text" maxlength="255" value="{{ old('alamat') }}" class="form-control" id="alamat" name="alamat" placeholder="Jl. Mahakam No.25, Surabaya" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan alamat pengiriman.
                 </div>
@@ -82,7 +82,7 @@
 
             <div class="col-md-5">
                 <label for="provinsi" class="form-label">Provinsi</label>
-                <input type="text" value="{{ old('provinsi') }}" class="form-control" id="provinsi" name="provinsi" placeholder="Jawa Timur" required>
+                <input type="text" maxlength="35" value="{{ old('provinsi') }}" class="form-control" id="provinsi" name="provinsi" placeholder="Jawa Timur" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan provinsi.
                 </div>
@@ -90,7 +90,7 @@
 
             <div class="col-md-4">
                 <label for="Kabupate" class="form-label">Kabupaten / Kota</label>
-                <input type="text" value="{{ old('kabupaten') }}" class="form-control" id="kabupaten" name="kabupaten" placeholder="Jawa Timur" required>
+                <input type="text" maxlength="25" value="{{ old('kabupaten') }}" class="form-control" id="kabupaten" name="kabupaten" placeholder="Jawa Timur" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan kabupaten / kota.
                 </div>
@@ -98,7 +98,7 @@
 
             <div class="col-md-3">
                 <label for="kode_pos" class="form-label">Kode Pos</label>
-                <input type="text" value="{{ old('code') }}" class="form-control" id="code" name="code" placeholder="61268" required>
+                <input type="text" maxlength="7" value="{{ old('code') }}" class="form-control" id="code" name="code" placeholder="61268" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan kode pos.
                 </div>

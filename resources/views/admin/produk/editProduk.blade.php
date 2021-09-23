@@ -25,14 +25,14 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="nama">Nama Produk</label>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan Nama Produk" value="{{ $product->nama }}">
+                    <input maxlength="100" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan Nama Produk" value="{{ $product->nama }}">
                     @error('nama')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="harga">Harga</label>
-                    <input type="text" onkeypress="return Angka(event)" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="{{ $product->harga }}">
+                    <input maxlength="10" type="text" onkeypress="return Angka(event)" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="{{ $product->harga }}">
                     @error('harga')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

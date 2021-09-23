@@ -85,7 +85,7 @@
                     <div class="card-body mt-0">
                         <div class="form-group">
                             <label for="nama">Nama Kategori</label>
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan nama kategori" value="{{ old('nama') }}">
+                            <input type="text" maxlength="25" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan nama kategori" value="{{ old('nama') }}">
                             @error('nama')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -121,7 +121,7 @@
                     <div class="card-body mt-0">
                         <div class="form-group">
                             <label for="nama">Nama Kategori</label>
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan nama kategori" value="{{ $data->nama }}">
+                            <input type="text" maxlength="25" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan nama kategori" value="{{ $data->nama }}">
                             @error('nama')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror

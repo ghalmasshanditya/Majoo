@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Nama</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ Auth::user()->name }}">
+                    <input type="text" maxlength="75" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ Auth::user()->name }}">
                     @error('name')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -90,7 +90,7 @@
             <div class="form-group row">
                 <label for="phone" class="col-sm-2 col-form-label">Telepon</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="phone" name="phone" value="{{ Auth::user()->phone }}">
+                    <input type="number" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="phone" maxlength="15" name="phone" value="{{ Auth::user()->phone }}">
                     @error('phone')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

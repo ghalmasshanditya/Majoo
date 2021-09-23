@@ -85,14 +85,14 @@
                     <div class="card-body mt-0">
                         <div class="form-group">
                             <label for="nama">Nama Produk</label>
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan Nama Produk" value="{{ old('nama') }}">
+                            <input maxlength="100" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukkan Nama Produk" value="{{ old('nama') }}">
                             @error('nama')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="harga">Harga</label>
-                            <input type="text" onkeypress="return Angka(event)" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="{{ old('harga') }}">
+                            <input maxlength="10" type="text" onkeypress="return Angka(event)" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="{{ old('harga') }}">
                             @error('harga')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -243,6 +243,7 @@
 
 </div>
 @endforeach
+
 <script>
     function Angka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode
