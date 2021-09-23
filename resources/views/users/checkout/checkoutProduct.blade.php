@@ -66,7 +66,7 @@
 
             <div class="col-12">
                 <label for="telp" class="form-label">Nomor Telepon</label>
-                <input type="text" value="{{ old('telp') }}" class="form-control" id="telp" name="telp" placeholder="089******" required>
+                <input type="text" maxlength="13" value="{{ old('telp') }}" class="form-control" id="telp" name="telp" placeholder="089******" required>
                 <div class="invalid-feedback">
                     Silahkan masukkan nomor telepon.
                 </div>

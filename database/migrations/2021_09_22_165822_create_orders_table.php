@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('first_name', 20);
             $table->string('last_name', 35);
             $table->string('email');
-            $table->string('telp', 12);
+            $table->string('telp', 13);
             $table->string('provinsi', 35);
             $table->string('kabupaten', 25);
             $table->string('alamat');
